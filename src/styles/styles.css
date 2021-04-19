@@ -1,0 +1,76 @@
+/*GLOBALES*/
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    min-height: 100%;
+}
+
+/*ROUTER*/
+.router-container{
+    display: flex;
+}
+
+/*NAVBAR*/
+.navbar{
+    min-height: 100vh;
+    background:#003133;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-titulo{
+    width: 100;
+    background: #4d4dff;
+    padding: 1rem 4rem;
+}
+
+.navbar .container-titulo p{
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.navbar-lista{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar-lista li{
+   width: 100;
+   /* border-bottom: 1px solid #fff; */
+   padding: 20px;
+}
+
+.navbar-lista li:hover{
+    background: red;
+    cursor: pointer;
+ }
+
+.navbar-item{
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-icon{
+    color: white;
+    margin-right: 1rem;
+}
+
+.navbar-logout{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-logout p{
+    align-self: flex-end;
+    color: white;
+}
+
+.navbar-logout p:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
