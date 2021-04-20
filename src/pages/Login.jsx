@@ -16,7 +16,8 @@ export const Login = () => {
                 className="login-form"
                 onSubmit={handleSubmit}
             >
-                <input type="text"/>
+                <input className="login-input" type="text"/>
+                <input className="login-input" type="text"/>
                 <button type="submit">Ingresar</button>
             </form>
         </div>
