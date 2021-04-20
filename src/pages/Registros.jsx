@@ -3,11 +3,12 @@ import sesionContext from '../context/sesion/sesionContext'
 
 export const Registros = () => {
 
-    const context = useContext(sesionContext);
+    const {estaLoggeado} = useContext(sesionContext);
+    console.log(estaLoggeado)
 
     return (
         <div>
-           <p>{estaLoggeado}</p> 
+            {estaLoggeado ? "hola" : "adios"}
         </div>
     )
 }

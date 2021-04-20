@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
 
@@ -18,13 +18,31 @@ export const Navbar = () => {
             </div>            
             <ul className="navbar-lista">
                 <li onClick={()=>handleRoute('home')}>
-                    <i className="fas fa-home nav-icon"></i><Link className="navbar-item" to="/">Home</Link>
+                    <NavLink 
+                        exact 
+                        className="navbar-item" 
+                        to="/home" 
+                        activeClassName="selected"
+                    ><i className="fas fa-home nav-icon"></i> Home
+                    </NavLink>
                 </li>
                 <li onClick={()=>handleRoute('registros')}>
-                    <i className="fas fa-book nav-icon"></i><Link className="navbar-item" to="/registros">Registros</Link>
+                    <NavLink 
+                        exact 
+                        className="navbar-item" 
+                        to="/registros" 
+                        activeClassName="selected"
+                    ><i className="fas fa-book nav-icon"></i> Registros
+                    </NavLink>
                 </li>
                 <li onClick={()=>handleRoute('ajustes')}>
-                    <i class="fas fa-sliders-h nav-icon"></i><Link className="navbar-item" to="/ajustes">Ajustes</Link>
+                    <NavLink 
+                        exact 
+                        className="navbar-item" 
+                        to="/ajustes" 
+                        activeClassName="selected"
+                    > <i className="fas fa-sliders-h nav-icon"></i> Ajustes
+                    </NavLink>
                 </li>
             </ul>
 

@@ -41,7 +41,7 @@ body {
 .navbar-lista li{
    width: 100;
    /* border-bottom: 1px solid #fff; */
-   padding: 20px;
+   /* padding: 20px; */
 }
 
 .navbar-lista li:hover{
@@ -50,6 +50,8 @@ body {
  }
 
 .navbar-item{
+    display: block;
+    padding: 20px;
     color: #fff;
     text-decoration: none;
 }
@@ -73,4 +75,8 @@ body {
 .navbar-logout p:hover{
     cursor: pointer;
     text-decoration: underline;
+}
+
+.selected{
+    background: red;
 }

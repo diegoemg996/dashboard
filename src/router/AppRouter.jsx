@@ -5,8 +5,8 @@ import {
   } from "react-router-dom";
 import { Navbar } from "../components/ui/Navbar";
 import { Ajustes } from "../pages/Ajustes";
-  import { Home } from "../pages/Home";
-  import { Registros } from "../pages/Registros";
+import { Home } from "../pages/Home";
+import { Registros } from "../pages/Registros";
 
 
   const AppRouter = () => {
