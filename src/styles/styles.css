@@ -14,14 +14,14 @@ body {
 /*NAVBAR*/
 .navbar{
     min-height: 100vh;
-    background:#003133;
+    background:#1b222a;
     display: flex;
     flex-direction: column;
 }
 
 .container-titulo{
     width: 100;
-    background: #4d4dff;
+    background: #3c9afe;
     padding: 1rem 4rem;
 }
 
@@ -79,4 +79,21 @@ body {
 
 .selected{
     background: red;
+}
+
+/*LOGIN*/
+.login-main{
+    height: 100vh;
+    background: #1b222a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form{
+    background: white;
+    padding: 3rem;
+    border-radius: 10px;
+    -webkit-box-shadow: 5px 5px 13px 5px rgba(0,0,0,0.55); 
+    box-shadow: 5px 5px 13px 5px rgba(0,0,0,0.55);
 }
