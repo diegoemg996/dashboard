@@ -11,6 +11,10 @@ export const Navbar = () => {
         history.push(`/${ruta}`)
     }
 
+    const handleLogout = (ruta)=>{
+        history.push('/login')
+    }
+
     return (
         <div className="navbar">
             <div className="container-titulo">
@@ -47,7 +51,7 @@ export const Navbar = () => {
             </ul>
 
             <div className="navbar-logout">
-                <p>Cerrar Sesión</p>
+                <p onClick={handleLogout}>Cerrar Sesión</p>
             </div>
         </div>
     )

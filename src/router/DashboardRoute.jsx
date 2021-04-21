@@ -23,9 +23,8 @@ export const DashboardRoute = () => {
             <Route path="/ajustes">
               <Ajustes />
             </Route>
-            <Route path="/">
-              <Home />
-            </Route>
+            <Redirect to="/home"/>
+
           </Switch>
         </div>
     )

@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
 import SesionContext from './sesionContext';
-import SesionReducer from './sesionReducer';
+import {SesionReducer} from './sesionReducer';
 
 const SesionState = props => {
     const initialState = {
