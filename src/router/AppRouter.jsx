@@ -4,6 +4,7 @@ import {
     Route,
   } from "react-router-dom";
 import { Login } from "../pages/Login";
+import { Signin } from "../pages/Signin";
 import { DashboardRoute } from "./DashboardRoute";
 
 
@@ -12,6 +13,7 @@ import { DashboardRoute } from "./DashboardRoute";
       <Router>
         <Switch>
           <Route exact path="/login" component={Login}/>
+          <Route exact path="/signin" component={Signin}/>
           <Route  path="/" component={DashboardRoute}/>
         </Switch>
       </Router>

@@ -8,7 +8,7 @@ const SesionState = props => {
     }
 
     // Crear dispatch y state
-    const [state, dispatch] = useReducer(SesionReducer, initialState);
+    const [state] = useReducer(SesionReducer, initialState);
 
     return (
         <SesionContext.Provider

@@ -136,3 +136,13 @@ body {
 .login-icon{
     margin-right: 1rem;
 }
+
+.register-label{
+    margin: 0 0 0.5rem 0;
+}
+
+.login-redirect-signin{
+    cursor: pointer;
+    text-decoration: underline;
+    color: #183D65;
+}
