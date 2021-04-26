@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
+import sesionContext from '../../context/sesion/sesionContext';
 
 
 export const Navbar = () => {
 
     const history = useHistory();
+
+    const {logout} = useContext(sesionContext) 
 
     const handleRoute = (ruta)=>{
         history.push(`/${ruta}`)
@@ -13,6 +16,7 @@ export const Navbar = () => {
 
     const handleLogout = (ruta)=>{
         history.push('/login')
+        logout()
     }
 
     return (

@@ -40,9 +40,9 @@ export const Login = () => {
                 className="login-form"
                 onSubmit={handleSubmit}
             >
-                <div className="login-titulo"><p>Login</p></div>
+                <div className="login-titulo"><p>Iniciar Sesión</p></div>
                 <div className="login-container-input">
-                    <i className="fas fa-user login-icon"></i>
+                    <i className="fas fa-at login-icon"></i>
                     <input 
                         className="login-input" 
                         type="text"

@@ -5,5 +5,5 @@ export const types = {
     errores: '[Auth] Errores',
     quitarErrores: '[Auth] Quitar errores',
     login: '[Auth] Login',
-    logout: '[Auth] Logout'
+    logout: '[Auth] Logout',
 }

@@ -42,13 +42,20 @@ const SesionState = props => {
         })
     }
 
+    const logout = ()=>{
+        dispatch({
+            type: types.logout
+        })
+    }
+
     return (
         <SesionContext.Provider
             value={{
                 estaLoggeado: state.estaLoggeado,
                 erroresForm: state.erroresForm,
                 registroUsuario,
-                borrarErrores
+                borrarErrores,
+                logout
             }}
         >
             {props.children}

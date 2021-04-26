@@ -19,6 +19,11 @@ export const SesionReducer = (state, action) => {
                 ...state,
                 erroresForm: []
             }
+        case types.logout:
+            return{
+                ...state,
+                estaLoggeado: false
+            }
         
         default:
             return state;
