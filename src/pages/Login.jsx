@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom';
 import apiDB from '../api/apiDB';
+import { FormErrors } from '../components/FormErrors';
 import { useForm } from '../hooks/useForm';
 
 export const Login = () => {
@@ -10,6 +11,8 @@ export const Login = () => {
         password: ""
     });
 
+    const [errores, setErrores] = useState([])
+
     const {correo, password} = values;
     const history = useHistory();
 
@@ -18,18 +21,15 @@ export const Login = () => {
         e.preventDefault();
 
         try {
-            const res = await fetch('https://vyana-db.herokuapp.com/api/auth/login', {
-                method: "post",
-                body: JSON.stringify({
-                    correo,
-                    password
-                })
-            })
-            console.log(res)
+            const res =  await apiDB.post('/auth/login', {
+                correo,
+                password,
+                rol: 'USER_ROLE'
+            })         
         } catch (error) {
-            console.log(error)
+            setErrores(error.response.data.errors)
+            console.log(errores)
         }
-
 
 
     }
@@ -63,6 +63,14 @@ export const Login = () => {
                         onChange={ handleInputChange }
                     />
                 </div>
+                {
+                    errores.length > 0 &&
+                    errores.map(error =>(
+                        <FormErrors
+                            error={error}
+                        />
+                    ))
+                }
                 <button className="login-button" type="submit">Ingresar</button>
                 <p>¿No tienes cuenta? <span className="login-redirect-signin" onClick={()=>{history.push('/signin')}}>Registrate</span></p>
             </form>

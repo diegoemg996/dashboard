@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom';
 import { useForm } from '../hooks/useForm';
-import apiDB from '../api/apiDB';
+import { FormErrors } from '../components/FormErrors';
+import sesionContext from '../context/sesion/sesionContext';
 
 
 export const Signin = () => {
@@ -15,24 +16,26 @@ export const Signin = () => {
 
     const {nombre, correo, password, repitePassword} = values;
 
+    const {registroUsuario, estaLoggeado, erroresForm, borrarErrores} = useContext(sesionContext)
+
     const history = useHistory();
+
+    useEffect(() => {
+        if(estaLoggeado){
+            history.push('/')
+        }
+    }, [estaLoggeado])
+
 
     const handleSubmit = async (e)=>{
         e.preventDefault();
+        registroUsuario({nombre,correo, password})
 
-        try {
-            const res =  await apiDB.post('/usuarios', {
-                nombre,
-                correo,
-                password,
-                rol: 'USER_ROLE'
-            })
-            console.log(res);            
-        } catch (error) {
-            console.log(error)
-        }
+    }
 
-        history.push('/')
+    const handleRouter = ()=>{
+        history.push('/login')
+        borrarErrores();
     }
 
     return (
@@ -82,8 +85,14 @@ export const Signin = () => {
                         onChange={handleInputChange}
                     />
                 </div>
+                {
+                    erroresForm.length > 0 &&
+                        <FormErrors
+                            errores={erroresForm}
+                        />
+                }
                 <button className="login-button" type="submit">Registrate</button>
-                <p>¿Ya tienes cuenta? <span className="login-redirect-signin" onClick={()=>{history.push('/login')}}>Inicia Sesión</span></p>
+                <p>¿Ya tienes cuenta? <span className="login-redirect-signin" onClick={handleRouter}>Inicia Sesión</span></p>
             </form>
         </div>
     )

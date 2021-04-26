@@ -146,3 +146,19 @@ body {
     text-decoration: underline;
     color: #183D65;
 }
+
+
+/*FORM ERROR*/
+.container-errores{
+    color: white;
+    margin: 0 0 1rem 0;
+    background: red;
+    padding: 0.5rem;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.container-errores ul{
+    margin: 0;
+    padding-left: 10px;
+}

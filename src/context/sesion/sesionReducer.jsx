@@ -1,9 +1,23 @@
+import { types } from "../../types/types";
+
 
 export const SesionReducer = (state, action) => {
     switch(action.type) {
-        case "TAREAS_PROYECTO":
+        case types.signin:
             return {
-                ...state
+                ...state,
+                estaLoggeado: true
+            }
+        case types.errores:
+            return{
+                ...state,
+                estaLoggeado: false,
+                erroresForm: action.payload
+            }
+        case types.quitarErrores:
+            return{
+                ...state,
+                erroresForm: []
             }
         
         default:
