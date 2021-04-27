@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom';
-import apiDB from '../api/apiDB';
 import { FormErrors } from '../components/FormErrors';
+import { Loading } from '../components/ui/Loading';
+import sesionContext from '../context/sesion/sesionContext';
 import { useForm } from '../hooks/useForm';
 
 export const Login = () => {
@@ -11,32 +12,45 @@ export const Login = () => {
         password: ""
     });
 
-    const [errores, setErrores] = useState([])
-
+    const {iniciarSesion, estaLoggeado, erroresForm, borrarErrores} = useContext(sesionContext);
+    const [cargando, setCargando] = useState(false)
     const {correo, password} = values;
     const history = useHistory();
 
-    const handleSubmit = async(e)=>{
-
-        e.preventDefault();
-
-        try {
-            const res =  await apiDB.post('/auth/login', {
-                correo,
-                password,
-                rol: 'USER_ROLE'
-            })         
-        } catch (error) {
-            setErrores(error.response.data.errors)
-            console.log(errores)
+    useEffect(() => {
+        if(estaLoggeado){
+            setCargando(false)
+            history.push('/')
         }
+    }, [estaLoggeado])
+
+    useEffect(() => {
+        if(erroresForm.length > 0){
+            setCargando(false)
+        }
+    }, [erroresForm])
 
 
+    const handleSubmit = async(e)=>{
+        e.preventDefault();
+        iniciarSesion(values);
+        setCargando(true);
+    }
+
+    const handleRouter = ()=>{
+        history.push('/login')
+        borrarErrores();
     }
 
     return (
         <div className="login-main">
-            <form 
+
+            {
+                cargando ?
+                <Loading/>
+                :
+
+                <form 
                 className="login-form"
                 onSubmit={handleSubmit}
             >
@@ -64,16 +78,15 @@ export const Login = () => {
                     />
                 </div>
                 {
-                    errores.length > 0 &&
-                    errores.map(error =>(
+                    erroresForm.length > 0 &&
                         <FormErrors
-                            error={error}
+                            errores={erroresForm}
                         />
-                    ))
                 }
                 <button className="login-button" type="submit">Ingresar</button>
                 <p>¿No tienes cuenta? <span className="login-redirect-signin" onClick={()=>{history.push('/signin')}}>Registrate</span></p>
             </form>
+            }
         </div>
     )
 }

@@ -24,6 +24,12 @@ export const SesionReducer = (state, action) => {
                 ...state,
                 estaLoggeado: false
             }
+        case types.login:
+            return{
+                ...state,
+                estaLoggeado: true,
+                usuarioLoggeado: action.payload
+            }
         
         default:
             return state;

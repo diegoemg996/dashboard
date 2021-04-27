@@ -7,7 +7,8 @@ import apiDB from '../../api/apiDB';
 const SesionState = props => {
     const initialState = {
         estaLoggeado: false,
-        erroresForm: []
+        erroresForm: [],
+        usuarioLoggeado: {}
     }
 
     // Crear dispatch y state
@@ -33,6 +34,30 @@ const SesionState = props => {
                 payload: error.response.data.errors
             })
         } 
+    }
+
+    const iniciarSesion = async(datos) =>{
+        try {
+            const res =  await apiDB.post('/auth/login', {
+                ...datos
+            })
+
+            const usuario = {...res.data}
+
+            dispatch({
+                type: types.login,
+                payload: usuario
+            })
+
+            borrarErrores();
+            
+            console.log(res)
+        } catch (error) {
+            dispatch({
+                type: types.errores,
+                payload: error.response.data.errors
+            })
+        }
 
     }
 
@@ -53,9 +78,11 @@ const SesionState = props => {
             value={{
                 estaLoggeado: state.estaLoggeado,
                 erroresForm: state.erroresForm,
+                usuarioLoggeado: state.usuarioLoggeado,
                 registroUsuario,
                 borrarErrores,
-                logout
+                logout,
+                iniciarSesion
             }}
         >
             {props.children}

@@ -86,7 +86,7 @@ export const Signin = () => {
                         <i className="fas fa-key login-icon"></i>
                         <input 
                             className="login-input" 
-                            type="text"
+                            type="password"
                             placeholder="Contraseña"
                             name="password"
                             value={password}
