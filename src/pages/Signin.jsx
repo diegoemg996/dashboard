@@ -14,11 +14,9 @@ export const Signin = () => {
         password: "",
     });
 
-    const {nombre, correo, password} = values;
-
     const {registroUsuario, estaLoggeado, erroresForm, borrarErrores} = useContext(sesionContext)
     const [cargando, setCargando] = useState(false)
-
+    const {nombre, correo, password} = values;
     const history = useHistory();
 
     useEffect(() => {
@@ -26,7 +24,7 @@ export const Signin = () => {
             setCargando(false)
             history.push('/')
         }
-    }, [estaLoggeado])
+    }, [estaLoggeado, history])
 
 
     useEffect(() => {
@@ -38,9 +36,8 @@ export const Signin = () => {
 
     const handleSubmit = async (e)=>{
         e.preventDefault();
+        registroUsuario(values);
         setCargando(true);
-        registroUsuario(values)
-
     }
 
     const handleRouter = ()=>{

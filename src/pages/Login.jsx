@@ -22,7 +22,7 @@ export const Login = () => {
             setCargando(false)
             history.push('/')
         }
-    }, [estaLoggeado])
+    }, [estaLoggeado, history])
 
     useEffect(() => {
         if(erroresForm.length > 0){
@@ -38,7 +38,7 @@ export const Login = () => {
     }
 
     const handleRouter = ()=>{
-        history.push('/login')
+        history.push('/signin')
         borrarErrores();
     }
 
@@ -51,9 +51,9 @@ export const Login = () => {
                 :
 
                 <form 
-                className="login-form"
-                onSubmit={handleSubmit}
-            >
+                    className="login-form"
+                    onSubmit={handleSubmit}
+                >
                 <div className="login-titulo"><p>Iniciar Sesión</p></div>
                 <div className="login-container-input">
                     <i className="fas fa-at login-icon"></i>
@@ -84,7 +84,7 @@ export const Login = () => {
                         />
                 }
                 <button className="login-button" type="submit">Ingresar</button>
-                <p>¿No tienes cuenta? <span className="login-redirect-signin" onClick={()=>{history.push('/signin')}}>Registrate</span></p>
+                <p>¿No tienes cuenta? <span className="login-redirect-signin" onClick={handleRouter}>Registrate</span></p>
             </form>
             }
         </div>

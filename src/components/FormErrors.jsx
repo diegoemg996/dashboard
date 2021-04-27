@@ -7,7 +7,7 @@ export const FormErrors = ({errores}) => {
                 <ul>
                     {
                         errores.map(error =>(
-                            <li>{error.msg}</li>
+                            <li key={error.msg}>{error.msg}</li>
                         ))
                     }
                 </ul>
