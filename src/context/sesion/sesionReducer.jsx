@@ -6,7 +6,8 @@ export const SesionReducer = (state, action) => {
         case types.signin:
             return {
                 ...state,
-                estaLoggeado: true
+                estaLoggeado: true,
+                usuarioLoggeado: action.payload
             }
         case types.errores:
             return{
@@ -22,7 +23,8 @@ export const SesionReducer = (state, action) => {
         case types.logout:
             return{
                 ...state,
-                estaLoggeado: false
+                estaLoggeado: false,
+                usuarioLoggeado: []
             }
         case types.login:
             return{

@@ -22,13 +22,20 @@ const SesionState = props => {
                 rol: 'USER_ROLE'
             })
 
+            const usuario = {...res.data}
+
             dispatch({
-                type: types.signin
+                type: types.signin,
+                payload: usuario
+
             })
+
+            localStorage.setItem('usuario', JSON.stringify(usuario));
 
             borrarErrores();
 
         } catch (error) {
+            console.log(error.response)
             dispatch({
                 type: types.errores,
                 payload: error.response.data.errors
@@ -48,6 +55,8 @@ const SesionState = props => {
                 type: types.login,
                 payload: usuario
             })
+
+            localStorage.setItem('usuario', JSON.stringify(usuario));
 
             borrarErrores();
         } catch (error) {

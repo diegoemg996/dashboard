@@ -8,7 +8,9 @@ export const Navbar = () => {
 
     const history = useHistory();
 
-    const {logout} = useContext(sesionContext) 
+    const {logout, usuarioLoggeado} = useContext(sesionContext);
+
+    const {usuario} = usuarioLoggeado;
 
     const handleRoute = (ruta)=>{
         history.push(`/${ruta}`)
@@ -22,7 +24,7 @@ export const Navbar = () => {
     return (
         <div className="navbar">
             <div className="container-titulo">
-                <p>Dashboard</p>
+                <p>{usuario.nombre}</p>
             </div>            
             <ul className="navbar-lista">
                 <li onClick={()=>handleRoute('home')}>
