@@ -24,16 +24,16 @@ export const Navbar = () => {
     return (
         <div className="navbar">
             <div className="container-titulo">
-                <p>Bienvenido, {!!usuario && usuario.nombre}</p>
+                <p><span>Bienvenido, </span>{!!usuario && usuario.nombre}</p>
             </div>            
             <ul className="navbar-lista">
-                <li onClick={()=>handleRoute('home')}>
+                <li onClick={()=>handleRoute('movimientos')}>
                     <NavLink 
                         exact 
                         className="navbar-item" 
-                        to="/home" 
+                        to="/movimientos" 
                         activeClassName="selected"
-                    ><i className="fas fa-home nav-icon"></i> Home
+                    ><i className="fas fa-receipt nav-icon"></i> Movimientos
                     </NavLink>
                 </li>
                 <li onClick={()=>handleRoute('registros')}>
