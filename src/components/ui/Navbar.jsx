@@ -24,7 +24,7 @@ export const Navbar = () => {
     return (
         <div className="navbar">
             <div className="container-titulo">
-                <p>{usuario.nombre}</p>
+                <p>Bienvenido, {!!usuario && usuario.nombre}</p>
             </div>            
             <ul className="navbar-lista">
                 <li onClick={()=>handleRoute('home')}>

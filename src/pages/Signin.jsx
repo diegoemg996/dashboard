@@ -10,13 +10,14 @@ export const Signin = () => {
 
     const [values, handleInputChange] = useForm({
         nombre: "",
+        apellido: "",
         correo: "",
         password: "",
     });
 
     const {registroUsuario, estaLoggeado, erroresForm, borrarErrores} = useContext(sesionContext)
     const [cargando, setCargando] = useState(false)
-    const {nombre, correo, password} = values;
+    const {nombre, apellido, correo, password} = values;
     const history = useHistory();
 
     useEffect(() => {
@@ -65,6 +66,17 @@ export const Signin = () => {
                             placeholder="Nombre"
                             name="nombre"
                             value={nombre}
+                            onChange={handleInputChange}
+                        />
+                    </div>
+                    <div className="login-container-input">
+                        <i className="fas fa-user login-icon"></i>
+                        <input 
+                            className="login-input" 
+                            type="text"
+                            placeholder="Apellido"
+                            name="apellido"
+                            value={apellido}
                             onChange={handleInputChange}
                         />
                     </div>

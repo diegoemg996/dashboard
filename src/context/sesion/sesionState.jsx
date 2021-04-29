@@ -75,10 +75,18 @@ const SesionState = props => {
         })
     }
 
+    const actualizarSesion = (usuario)=>{
+        dispatch({
+            type: types.login,
+            payload: usuario
+        })
+    }
+
     const logout = ()=>{
         dispatch({
             type: types.logout
         })
+        localStorage.removeItem('usuario')
     }
 
     return (
@@ -90,7 +98,8 @@ const SesionState = props => {
                 registroUsuario,
                 borrarErrores,
                 logout,
-                iniciarSesion
+                iniciarSesion,
+                actualizarSesion
             }}
         >
             {props.children}
