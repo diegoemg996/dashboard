@@ -18,7 +18,7 @@ import { DashboardRoute } from "./DashboardRoute";
       const usuario = JSON.parse(localStorage.getItem('usuario'));
       
       !!usuario && actualizarSesion(usuario);
-    }, [actualizarSesion])
+    }, [])
 
     return (
       <Router>

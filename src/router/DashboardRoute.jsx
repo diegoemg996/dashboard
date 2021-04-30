@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import { Navbar } from "../components/ui/Navbar";
 import { Ajustes } from "../pages/Ajustes";
-import { Home } from "../pages/Home";
+import { Movimientos } from "../pages/Movimientos";
 import { Registros } from "../pages/Registros";
 
 export const DashboardRoute = () => {
@@ -14,8 +14,8 @@ export const DashboardRoute = () => {
         <div className="router-container">
           <Navbar/>
           <Switch>
-            <Route path="/home">
-              <Home />
+            <Route path="/movimientos">
+              <Movimientos />
             </Route>
             <Route path="/registros">
               <Registros />
@@ -23,7 +23,7 @@ export const DashboardRoute = () => {
             <Route path="/ajustes">
               <Ajustes />
             </Route>
-            <Redirect to="/home"/>
+            <Redirect to="/movimientos"/>
 
           </Switch>
         </div>
