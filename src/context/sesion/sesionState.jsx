@@ -35,7 +35,6 @@ const SesionState = props => {
             borrarErrores();
 
         } catch (error) {
-            console.log(error.response)
             dispatch({
                 type: types.errores,
                 payload: error.response.data.errors

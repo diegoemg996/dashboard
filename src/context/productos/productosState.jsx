@@ -20,16 +20,13 @@ const ProductosState = props => {
                     token: tokenUsuario
                 }
             })
-            console.log(productos.data)
             dispatch({
                 type: types.obtenerProductos,
                 payload: productos.data.productos
             })
         } catch (error) {
-            console.log(error.reponse)
         }
 
-        console.log("si sirvo")
     }
 
 

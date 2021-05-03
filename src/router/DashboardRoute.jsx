@@ -9,7 +9,9 @@ import { Ajustes } from "../pages/Ajustes";
 import { Movimientos } from "../pages/Movimientos";
 import { Registros } from "../pages/Registros";
 
+
 export const DashboardRoute = () => {
+  
     return (
         <div className="router-container">
           <Navbar/>

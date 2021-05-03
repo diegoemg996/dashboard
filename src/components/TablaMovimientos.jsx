@@ -1,40 +1,35 @@
 import React from 'react'
+import { Movimiento } from './Movimiento'
 
-export const TablaMovimientos = () => {
+
+export const TablaMovimientos = ({producto}) => {
+
+
     return (
-        <div class="wrapper">
+        <div className="wrapper">
   
-            <div class="table">
-                <div class="row header">
-                    <div class="cell">
-                        Name
+            <div className="table">
+                <div className="row header">
+                    <div className="cell">
+                        Nombre
                     </div>
-                    <div class="cell">
-                        Age
+                    <div className="cell">
+                        Bodega
                     </div>
-                    <div class="cell">
-                        Occupation
-                    </div>
-                    <div class="cell">
-                        Location
+                    <div className="cell">
+                        Cantidad
                     </div>
                 </div>
                 
-                <div class="row">
-                    <div class="cell" data-title="Name">
-                        Luke Peters
-                    </div>
-                    <div class="cell" data-title="Age">
-                        25
-                    </div>
-                    <div class="cell" data-title="Occupation">
-                        Freelance Web Developer
-                    </div>
-                    <div class="cell" data-title="Location">
-                        Brookline, MA
-                    </div>
-                </div>
-                
+                     {
+                        producto.length>0 &&
+                        producto.map(item =>(
+                            <Movimiento
+                                producto={item}
+                                key={item._id}
+                            />
+                        ))
+                    }                 
             </div>
         </div>
     )
