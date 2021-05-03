@@ -29,6 +29,23 @@ const ProductosState = props => {
 
     }
 
+    const movimientoProductos = async(tokenUsuario, id)=>{
+
+        try {
+            const productos = await apiDB.get('/productos', {
+                headers:{
+                    token: tokenUsuario
+                }
+            })
+            dispatch({
+                type: types.obtenerProductos,
+                payload: productos.data.productos
+            })
+        } catch (error) {
+        }
+
+    }
+
 
     return (
         <ProductosContext.Provider
