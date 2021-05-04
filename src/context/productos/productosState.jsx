@@ -3,6 +3,7 @@ import { types } from '../../types/types';
 import apiDB from '../../api/apiDB';
 import { ProductosReducer } from './productosReducer';
 import ProductosContext from './productosContext';
+import axios from 'axios';
 
 const ProductosState = props => {
     const initialState = {
@@ -29,19 +30,27 @@ const ProductosState = props => {
 
     }
 
-    const movimientoProductos = async(tokenUsuario, id)=>{
+    const movimientoProductos = async(tokenUsuario, id, cantidad)=>{
+
+        const headers ={ 
+            'Content-Type': 'application/json',
+            'Authorization': `${tokenUsuario}`
+        }
 
         try {
-            const productos = await apiDB.get('/productos', {
-                headers:{
-                    token: tokenUsuario
-                }
+            const producto = await apiDB.post(`/movimientos/agregar/${id}`, {
+                data:{
+                    cantidad
+                },
+                headers
             })
-            dispatch({
+            console.log(producto)
+/*             dispatch({
                 type: types.obtenerProductos,
                 payload: productos.data.productos
-            })
+            }) */
         } catch (error) {
+            console.log(error.response)
         }
 
     }
@@ -51,7 +60,8 @@ const ProductosState = props => {
         <ProductosContext.Provider
             value={{
                 productos: state.productos,
-                obtenerProductos
+                obtenerProductos,
+                movimientoProductos
             }}
         >
             {props.children}

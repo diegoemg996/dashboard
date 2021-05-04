@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import productosContext from '../context/productos/productosContext';
+import sesionContext from '../context/sesion/sesionContext';
 import { useForm } from '../hooks/useForm';
 
 export const Movimiento = ({producto}) => {
+
+    const {movimientoProductos} = useContext(productosContext);
+    const {usuarioLoggeado} = useContext(sesionContext);
 
     const [values, handleInputChange] = useForm({
         movimiento: 0
@@ -9,7 +14,7 @@ export const Movimiento = ({producto}) => {
 
     const {movimiento} = values;
     const handleSuma = ()=>{
-
+        movimientoProductos(usuarioLoggeado.token, producto._id, movimiento)
     }
 
     const handleResta = ()=>{
