@@ -13,14 +13,10 @@ const ProductosState = props => {
     // Crear dispatch y state
     const [state, dispatch] = useReducer(ProductosReducer, initialState);
 
-    const obtenerProductos = async(tokenUsuario)=>{
+    const obtenerProductos = async()=>{
 
         try {
-            const productos = await apiDB.get('/productos', {
-                headers:{
-                    token: tokenUsuario
-                }
-            })
+            const productos = await apiDB.get('/productos')
             dispatch({
                 type: types.obtenerProductos,
                 payload: productos.data.productos
@@ -32,27 +28,20 @@ const ProductosState = props => {
 
     const movimientoProductos = async(tokenUsuario, id, cantidad)=>{
 
-        const headers ={ 
-            'Content-Type': 'application/json',
-            'Authorization': `${tokenUsuario}`
-        }
+        console.log(tokenUsuario, id, parseFloat(cantidad))
+        const numeroCantidad = parseFloat(cantidad);
 
         try {
-            const producto = await apiDB.post(`/movimientos/agregar/${id}`, {
-                data:{
-                    cantidad
-                },
-                headers
+            const productos = await apiDB.post(`/movimientos/agregar/${id}`,{cantidad:numeroCantidad}, {
+                headers:{
+                    'Authorization' : tokenUsuario
+                }
             })
-            console.log(producto)
-/*             dispatch({
-                type: types.obtenerProductos,
-                payload: productos.data.productos
-            }) */
+            console.log(productos)
+            obtenerProductos()
         } catch (error) {
-            console.log(error.response)
+            console.log(error.response);
         }
-
     }
 
 
