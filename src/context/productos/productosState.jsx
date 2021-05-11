@@ -3,7 +3,7 @@ import { types } from '../../types/types';
 import apiDB from '../../api/apiDB';
 import { ProductosReducer } from './productosReducer';
 import ProductosContext from './productosContext';
-import axios from 'axios';
+
 
 const ProductosState = props => {
     const initialState = {
@@ -42,11 +42,22 @@ const ProductosState = props => {
         } catch (error) {
             console.log(error.response);
         }
-<<<<<<< HEAD
-=======
+    }
 
+    const agregarProducto = async(valores, tokenUsuario)=>{
 
->>>>>>> 45c982b3b527facc56d060d216cee96153a892ba
+        try {
+            const productos = await apiDB.post(`/productos`,valores, {
+                headers:{
+                    'Authorization' : tokenUsuario
+                }
+            })
+            console.log(productos)
+            obtenerProductos()
+        } catch (error) {
+            console.log(error.response);
+        }
+
     }
 
 
@@ -55,7 +66,8 @@ const ProductosState = props => {
             value={{
                 productos: state.productos,
                 obtenerProductos,
-                movimientoProductos
+                movimientoProductos,
+                agregarProducto
             }}
         >
             {props.children}

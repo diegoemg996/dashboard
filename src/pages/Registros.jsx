@@ -5,7 +5,7 @@ export const Registros = () => {
 
     const {estaLoggeado} = useContext(sesionContext);
     return (
-        <div>
+        <div className="pagina-container">
             {estaLoggeado ? "hola" : "adios"}
         </div>
     )

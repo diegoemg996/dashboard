@@ -26,7 +26,6 @@ export const DashboardRoute = () => {
               <Ajustes />
             </Route>
             <Redirect to="/movimientos"/>
-
           </Switch>
         </div>
     )

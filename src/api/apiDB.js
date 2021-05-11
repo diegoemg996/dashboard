@@ -3,7 +3,7 @@ import axios from 'axios';
 
 
 const apiDB = axios.create({
-    baseURL: 'https://vyana-db.herokuapp.com/api',
+    baseURL: 'http://localhost:8080/api',
 });
 
 

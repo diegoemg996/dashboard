@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { AgregarProducto } from '../components/AgregarProducto';
 import { TablaMovimientos } from '../components/TablaMovimientos'
 import { Loading } from '../components/ui/Loading';
 import productosContext from '../context/productos/productosContext'
@@ -12,7 +13,6 @@ export const Movimientos = () => {
 
     useEffect(()=>{
         productos.length > 0 && setCargando(false)
-        console.log(productos)
     },[productos])
 
     useEffect(() => {
@@ -22,8 +22,10 @@ export const Movimientos = () => {
 
 
     return (
-        <div className="movimientos-container">
+        <div className="pagina-container">
 
+            <AgregarProducto/>
+            
             {
                 cargando 
                 ?
