@@ -42,6 +42,11 @@ const ProductosState = props => {
         } catch (error) {
             console.log(error.response);
         }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 45c982b3b527facc56d060d216cee96153a892ba
     }
 
 
