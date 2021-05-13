@@ -22,6 +22,9 @@ export const TablaMovimientos = ({producto}) => {
                         <div className="cell">
                             Movimientos
                         </div>
+                        <div className="cell">
+                            Edición
+                        </div>
                     </div>
             
                 {

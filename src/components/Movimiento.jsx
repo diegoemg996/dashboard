@@ -4,8 +4,11 @@ import sesionContext from '../context/sesion/sesionContext';
 import { useForm } from '../hooks/useForm';
 import Swal from 'sweetalert2'
 import { addCommas } from '../helpers/addCommas';
+import { useHistory } from 'react-router';
 
 export const Movimiento = ({producto}) => {
+
+    const history = useHistory();
 
     const {movimientoProductos} = useContext(productosContext);
     const {usuarioLoggeado} = useContext(sesionContext);
@@ -34,6 +37,10 @@ export const Movimiento = ({producto}) => {
         )
         reset();
     }
+
+    const handleEdit = (e)=>{
+        history.push(`/editar/${e.target.value}`, producto);  
+    }
     
     return (
         <div className="row">
@@ -61,6 +68,12 @@ export const Movimiento = ({producto}) => {
                     className="movimientos-boton-menos"
                     onClick={handleResta}
                 >-</button>
+            </div>
+            <div className="cell">
+                <button
+                    onClick={handleEdit}
+                    value={producto._id}
+                >Editar</button>
             </div>
         </div>
 

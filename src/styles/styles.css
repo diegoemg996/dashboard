@@ -7,6 +7,10 @@ body {
     background: #E8E8E8;
 }
 
+*,*:focus,*:hover{
+  outline:none;
+}
+
 /*ROUTER*/
 .router-container{
     display: flex;
@@ -23,16 +27,14 @@ body {
 /*NAVBAR*/
 .navbar{
     min-height: 100vh;
-    min-width: 20%;
     background:#1b222a;
-    flex: 1 1;
     display: flex;
     flex-direction: column;
 }
 
 @media screen and (max-width: 667px) {
   .navbar {
-    min-height: 25vh;
+    min-height: 20vh;
   }
 }
 
@@ -347,4 +349,60 @@ body {
   }
 
 
+
+
   /*AGREGAR*/
+  .agregar-boton{
+    border: transparent;
+    border-radius: 50%;
+    background: red;
+    height: 50px;
+    width: 50px;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.15);
+  }
+
+  .agregar-boton:hover{
+    background-color: #cc0000;
+  }
+
+  .agregar-form{
+    margin: 1rem 0;
+  }
+
+  .agregar-input{
+    background: transparent;
+    border: transparent;
+    border-bottom: 1px solid #122a;
+    margin-right: 0.5rem;
+    text-align: center;
+  }
+
+  .agregar-input::placeholder{
+    text-align: center;
+  }
+
+  .agregar-input-boton{
+    background: #1b222a;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 5px;
+  }
+
+  .agregar-container{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .agregar-form-container{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+  }

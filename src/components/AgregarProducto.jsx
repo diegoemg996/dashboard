@@ -26,14 +26,17 @@ export const AgregarProducto = () => {
     return (
         <div className="agregar-container">
             <button
+                className="agregar-boton"
                 onClick={()=>{setShowForm(!showForm)}}
-            >Agregar Producto</button>
+            >+</button>
 
             {
                 showForm 
                     &&
-                <form
+                <div className="agregar-form-container">
+                                    <form
                     onSubmit={handleSubmit}
+                    className="agregar-form"
                 >
                     <input 
                         type="text"
@@ -41,26 +44,32 @@ export const AgregarProducto = () => {
                         value={nombre}
                         onChange={handleInputChange}
                         name="nombre"
+                        className="agregar-input"
                     />
                     <input 
                         type="text"
                         placeholder="Bodega"
                         value={bodega}
                         onChange={handleInputChange}
-                        name="bodega" 
+                        name="bodega"
+                        className="agregar-input"
                     />
                     <input 
                         type="number"
                         placeholder="Cantidad"
                         value={cantidad}
                         onChange={handleInputChange}
-                        name="cantidad" 
+                        name="cantidad"
+                        className="agregar-input" 
                     />
-                    <input type="submit" />
+                    <input 
+                        type="submit" 
+                        value="Agregar"
+                        className="agregar-input-boton"
+                    />
                 </form>
+                </div>
             } 
-
-
         </div>
     )
 }
