@@ -406,3 +406,12 @@ body {
     justify-content: center;
     align-content: center;
   }
+
+  .editar-borrar-boton{
+    background: red;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 5px;
+    margin-left: 5px;
+  }

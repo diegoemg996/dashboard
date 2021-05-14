@@ -60,6 +60,24 @@ const ProductosState = props => {
 
     }
 
+    const editarProducto = async(valores, tokenUsuario, id)=>{
+
+        console.log(valores, tokenUsuario, id);
+
+        try {
+            const productos = await apiDB.put(`/productos/${id}`,valores, {
+                headers:{
+                    'Authorization' : tokenUsuario
+                }
+            })
+            console.log(productos)
+            obtenerProductos()
+        } catch (error) {
+            console.log(error.response);
+        }
+
+    }
+
 
     return (
         <ProductosContext.Provider
@@ -67,7 +85,8 @@ const ProductosState = props => {
                 productos: state.productos,
                 obtenerProductos,
                 movimientoProductos,
-                agregarProducto
+                agregarProducto,
+                editarProducto
             }}
         >
             {props.children}

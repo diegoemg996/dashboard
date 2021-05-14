@@ -34,9 +34,9 @@ export const AgregarProducto = () => {
                 showForm 
                     &&
                 <div className="agregar-form-container">
-                                    <form
-                    onSubmit={handleSubmit}
-                    className="agregar-form"
+                    <form
+                        onSubmit={handleSubmit}
+                        className="agregar-form"
                 >
                     <input 
                         type="text"
