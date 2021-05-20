@@ -8,6 +8,16 @@ export const ProductosReducer = (state, action) => {
                 ...state,
                 productos: action.payload
             }
+        case types.erroresAgregar:
+            return{
+                ...state,
+                erroresAgregar: action.payload
+            }
+        case types.borrarErroresAgregar:
+            return{
+                ...state,
+                erroresAgregar: {}
+            }
 
         default:
             return state;

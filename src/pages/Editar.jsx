@@ -1,13 +1,15 @@
-import { useLocation } from 'react-router';
+import { useHistory, useLocation } from 'react-router';
 import React, { useContext } from 'react'
 import productosContext from '../context/productos/productosContext';
 import sesionContext from '../context/sesion/sesionContext';
 import { useForm } from '../hooks/useForm';
+import Swal from 'sweetalert2';
 
 export const Editar = () => {
     const {state} = useLocation();
+    const history = useHistory();
 
-    const {editarProducto} = useContext(productosContext);
+    const {editarProducto, borrarProducto} = useContext(productosContext);
     const {usuarioLoggeado} = useContext(sesionContext);
 
     const [values, handleInputChange, reset] = useForm({
@@ -20,14 +22,37 @@ export const Editar = () => {
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        console.log(values, usuarioLoggeado.token, state._id);
         editarProducto(values, usuarioLoggeado.token, state._id);
-        
+        Swal.fire(
+            'Movimiento exitoso',
+            `Se ha modificado ${state.nombre}`,
+            'success'
+        )
+        history.push('/');   
+    }
+
+    const handleDelete = (e)=>{
+        e.preventDefault();
+        Swal.fire({
+            title: `¿Seguro qué quieres eliminar ${state.nombre}`,
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: `Eliminar`,
+            denyButtonText: `No Eliminar`,
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire('Eliminado Correctamente', '', 'success')
+              borrarProducto(state._id, usuarioLoggeado.token)
+              history.push('/');
+            } else if (result.isDenied) {
+              Swal.fire('No se ha eliminado', '', 'error')
+            }
+          })
     }
 
     return (
         <div className="pagina-container">
-            <div className="agregar-form-container">
+            <div className="form-edit">
                     <form
                         onSubmit={handleSubmit}
                         className="agregar-form"
@@ -63,6 +88,7 @@ export const Editar = () => {
                     />
                     <button
                         className="editar-borrar-boton"
+                        onClick={handleDelete}
                     >Borrar</button>
                 </form>
                 </div>

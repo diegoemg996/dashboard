@@ -6,38 +6,49 @@ export const TablaMovimientos = ({producto}) => {
 
 
     return (
+
         <div className="tabla-container">
-            <div className="wrapper">
-                <div className="table">
-                    <div className="row header">
-                        <div className="cell">
-                            Nombre
+
+            {
+                producto.length > 0
+                ?
+
+                <div className="wrapper">
+                    <div className="table">
+                        <div className="row header">
+                            <div className="cell">
+                                Nombre
+                            </div>
+                            <div className="cell">
+                                Bodega
+                            </div>
+                            <div className="cell">
+                                Cantidad
+                            </div>
+                            <div className="cell">
+                                Movimientos
+                            </div>
+                            <div className="cell">
+                                Edición
+                            </div>
                         </div>
-                        <div className="cell">
-                            Bodega
-                        </div>
-                        <div className="cell">
-                            Cantidad
-                        </div>
-                        <div className="cell">
-                            Movimientos
-                        </div>
-                        <div className="cell">
-                            Edición
-                        </div>
+                
+                    {
+                        producto.length>0 &&
+                        producto.map(item =>(
+                            <Movimiento
+                                producto={item}
+                                key={item._id}
+                            />
+                        ))
+                    }                 
                     </div>
-            
-                {
-                    producto.length>0 &&
-                    producto.map(item =>(
-                        <Movimiento
-                            producto={item}
-                            key={item._id}
-                        />
-                    ))
-                }                 
                 </div>
-            </div>
+                :
+                <p>No hay elementos agregados</p>
+
+            }
+            
         </div>
 
     )

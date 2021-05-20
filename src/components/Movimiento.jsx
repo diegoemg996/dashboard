@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import productosContext from '../context/productos/productosContext';
 import sesionContext from '../context/sesion/sesionContext';
 import { useForm } from '../hooks/useForm';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import { addCommas } from '../helpers/addCommas';
 import { useHistory } from 'react-router';
 
@@ -10,7 +10,7 @@ export const Movimiento = ({producto}) => {
 
     const history = useHistory();
 
-    const {movimientoProductos} = useContext(productosContext);
+    const {movimientoProductos, borrarErroresAgregar} = useContext(productosContext);
     const {usuarioLoggeado} = useContext(sesionContext);
 
     const [values, handleInputChange, reset] = useForm({
@@ -39,6 +39,7 @@ export const Movimiento = ({producto}) => {
     }
 
     const handleEdit = (e)=>{
+        borrarErroresAgregar();
         history.push(`/editar/${e.target.value}`, producto);  
     }
     
@@ -73,6 +74,7 @@ export const Movimiento = ({producto}) => {
                 <button
                     onClick={handleEdit}
                     value={producto._id}
+                    className="movimientos-editar"
                 >Editar</button>
             </div>
         </div>

@@ -7,7 +7,8 @@ import ProductosContext from './productosContext';
 
 const ProductosState = props => {
     const initialState = {
-        productos: {}
+        productos: {},
+        erroresAgregar:{}
     }
 
     // Crear dispatch y state
@@ -55,14 +56,15 @@ const ProductosState = props => {
             console.log(productos)
             obtenerProductos()
         } catch (error) {
-            console.log(error.response);
+           dispatch({
+                type: types.erroresAgregar,
+                payload: error.response.data.errors
+            }) 
         }
 
     }
 
     const editarProducto = async(valores, tokenUsuario, id)=>{
-
-        console.log(valores, tokenUsuario, id);
 
         try {
             const productos = await apiDB.put(`/productos/${id}`,valores, {
@@ -70,7 +72,6 @@ const ProductosState = props => {
                     'Authorization' : tokenUsuario
                 }
             })
-            console.log(productos)
             obtenerProductos()
         } catch (error) {
             console.log(error.response);
@@ -78,15 +79,37 @@ const ProductosState = props => {
 
     }
 
+    const borrarProducto = async(id, tokenUsuario)=>{
+        try {
+            const productoBorrado = await apiDB.delete(`/productos/${id}`,{
+                headers:{
+                    'Authorization' : tokenUsuario
+                }
+            })
+            obtenerProductos()
+        } catch (error) {
+            console.log(error.response);
+        }
+    }
+
+     const borrarErroresAgregar = ()=>{
+        dispatch({
+            type: types.borrarErroresAgregar
+        })
+    } 
+
 
     return (
         <ProductosContext.Provider
             value={{
                 productos: state.productos,
+                erroresAgregar: state.erroresAgregar,
                 obtenerProductos,
                 movimientoProductos,
                 agregarProducto,
-                editarProducto
+                editarProducto,
+                borrarProducto,
+                borrarErroresAgregar
             }}
         >
             {props.children}

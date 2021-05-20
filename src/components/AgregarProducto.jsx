@@ -2,11 +2,12 @@ import React, { useContext, useState } from 'react'
 import productosContext from '../context/productos/productosContext';
 import sesionContext from '../context/sesion/sesionContext';
 import { useForm } from '../hooks/useForm';
+import { FormErrors } from './FormErrors';
 
 export const AgregarProducto = () => {
 
     const [showForm, setShowForm] = useState(false);
-    const {agregarProducto} = useContext(productosContext);
+    const {agregarProducto,  erroresAgregar, borrarErroresAgregar} = useContext(productosContext);
     const {usuarioLoggeado} = useContext(sesionContext);
 
     const [values, handleInputChange, reset] = useForm({
@@ -19,6 +20,7 @@ export const AgregarProducto = () => {
 
     const handleSubmit = (e) =>{
         e.preventDefault();
+        borrarErroresAgregar();
         agregarProducto(values, usuarioLoggeado.token);
         reset();
     }
@@ -69,7 +71,17 @@ export const AgregarProducto = () => {
                     />
                 </form>
                 </div>
-            } 
+            }
+
+            {
+                erroresAgregar.length > 0 
+                    &&
+                <FormErrors
+                    errores ={ erroresAgregar}
+                    tipo={"agregar"}
+                />
+            }
+
         </div>
     )
 }

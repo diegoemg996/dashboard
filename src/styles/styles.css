@@ -205,6 +205,11 @@ body {
     padding-left: 10px;
 }
 
+.container-errores-agregar{
+  margin-top: -1rem;
+  color: red;
+}
+
 /*LOADING ICON*/
 
 .lds-ring {
@@ -272,7 +277,7 @@ body {
   .row.header {
     font-weight: 600;
     color: #ffffff;
-    background: red;
+    background: #1b222a;
   }
   .row.green {
     background: #27ae60;
@@ -348,6 +353,13 @@ body {
     height: 100%;
   }
 
+  .movimientos-editar{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
 
 
 
@@ -355,7 +367,7 @@ body {
   .agregar-boton{
     border: transparent;
     border-radius: 50%;
-    background: red;
+    background: #218e16;
     height: 50px;
     width: 50px;
     color: white;
@@ -363,12 +375,13 @@ body {
     cursor: pointer;
     transition: background-color 0.5s ease;
     margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
     margin-left: 0.5rem;
     box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.15);
   }
 
   .agregar-boton:hover{
-    background-color: #cc0000;
+    background-color: #006b00;
   }
 
   .agregar-form{
@@ -388,11 +401,12 @@ body {
   }
 
   .agregar-input-boton{
-    background: #1b222a;
+    background: #183D65;
     color: white;
     border: none;
     padding: 0.5rem;
     border-radius: 5px;
+    cursor: pointer;
   }
 
   .agregar-container{
@@ -414,4 +428,27 @@ body {
     padding: 0.5rem;
     border-radius: 5px;
     margin-left: 5px;
+    cursor: pointer;
+  }
+
+  .form-edit{
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media screen and (max-width: 667px) {
+    .agregar-form {
+      display: flex;
+      flex-direction: column;
+     
+    }
+  }
+
+  @media screen and (max-width: 667px) {
+    .agregar-input {
+      margin-bottom: 1rem;
+     
+    }
   }
