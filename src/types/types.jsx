@@ -9,5 +9,6 @@ export const types = {
     obtenerProductos: '[Productos] Obtener',
     movimientoProducto: '[Productos] Movimiento',
     erroresAgregar: '[Productos] Errrores agregar',
-    borrarErroresAgregar: '[Productos] Borrar errrores agregar'
+    borrarErroresAgregar: '[Productos] Borrar errrores agregar',
+    obtenerMovimientos: '[Productos] Obtener movimientos'
 }

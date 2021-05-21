@@ -8,7 +8,8 @@ import ProductosContext from './productosContext';
 const ProductosState = props => {
     const initialState = {
         productos: {},
-        erroresAgregar:{}
+        erroresAgregar:{},
+        movimientosProducto:{}
     }
 
     // Crear dispatch y state
@@ -92,6 +93,18 @@ const ProductosState = props => {
         }
     }
 
+    const obtenerMovimientos = async()=>{
+        try {
+            const movimientos = await apiDB.get('/movimientos');
+            dispatch({
+                type: types.obtenerMovimientos,
+                payload: movimientos.data.movimientos
+            })             
+        } catch (error) {
+            console.log(error.response)
+        }
+    }
+
      const borrarErroresAgregar = ()=>{
         dispatch({
             type: types.borrarErroresAgregar
@@ -104,12 +117,14 @@ const ProductosState = props => {
             value={{
                 productos: state.productos,
                 erroresAgregar: state.erroresAgregar,
+                movimientosProducto: state.movimientosProducto,
                 obtenerProductos,
                 movimientoProductos,
                 agregarProducto,
                 editarProducto,
                 borrarProducto,
-                borrarErroresAgregar
+                borrarErroresAgregar,
+                obtenerMovimientos
             }}
         >
             {props.children}

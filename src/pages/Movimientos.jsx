@@ -18,7 +18,6 @@ export const Movimientos = () => {
     useEffect(() => {
         obtenerProductos(usuarioLoggeado.token)
         setCargando(true)
-        console.log(productos)
     }, [])
 
 
@@ -28,7 +27,6 @@ export const Movimientos = () => {
             <AgregarProducto/>
             
             {
-                
                 cargando 
                 ?
                 <Loading/>
