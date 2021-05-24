@@ -13,11 +13,13 @@ export const Movimientos = () => {
 
     useEffect(()=>{
         productos.length > 0 && setCargando(false)
+        console.log(productos)
     },[productos])
 
     useEffect(() => {
         obtenerProductos(usuarioLoggeado.token)
         setCargando(true)
+        console.log(productos)
     }, [])
 
 

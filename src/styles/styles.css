@@ -342,7 +342,7 @@ body {
   }
 
   .pagina-container{
-    min-width: 80%;
+    width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -359,8 +359,6 @@ body {
     cursor: pointer;
     text-decoration: underline;
   }
-
-
 
 
   /*AGREGAR*/
@@ -451,4 +449,21 @@ body {
       margin-bottom: 1rem;
      
     }
+  }
+
+  /*REGISTRO*/
+
+  .registro-container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+  }
+
+  .registro-lista{
+    width: 70%;
+    margin: 0 auto;
+    background: #183D65;
   }
